@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Suspense, lazy } from "react";
+import { Route, Routes } from "react-router-dom";
+
+import HomePage from "./pages/Home/HomePage";
+import ErrorPage from "./pages/Error/ErrorPage";
+const ArticlePage = lazy(
+  () =>
+    import("./pages/Article/ArticlePage" /* webpackChunkName: "ArticlePage" */)
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <main>
+        <Suspense fallback={"Loader..."}>
+          <Routes>
+            <Route path="/news" element={<HomePage />} />
+            <Route path="/news/:news" element={<ArticlePage />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </Suspense>
+      </main>
+    </>
   );
 }
 

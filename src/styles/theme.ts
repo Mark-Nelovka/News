@@ -2,7 +2,7 @@ import { DefaultTheme } from 'styled-components'
 
 export const defaultTheme: DefaultTheme = {
   fonts: {
-    main: "Roboto",
+    main: "Montserrat",
   },
   fontWeight: {
     reqular: 400,

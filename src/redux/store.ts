@@ -15,7 +15,7 @@ import newsReducer from './news/newsSlice';
 // import weatherDetailsReducer from "./weatherDetails/weatDetSlice";
 
 const WeatherPersistConfig = {
-  key: 'weather',
+  key: 'news',
   storage,
   blacklist: ["pending"]
 };
@@ -26,11 +26,11 @@ const WeatherPersistConfig = {
 //   blacklist: ["pending"]
 // };
 
-const WeatherPersistedReducer = persistReducer(WeatherPersistConfig, newsReducer);
+const NewsPersistedReducer = persistReducer(WeatherPersistConfig, newsReducer);
 // const WeatherDetailsPersistedReducer = persistReducer(WeatherDetailsPersistConfig, weatherDetailsReducer);
 
 const rootReducer = combineReducers({ 
-    weather: WeatherPersistedReducer,
+    news: NewsPersistedReducer,
     // weatherDetails: WeatherDetailsPersistedReducer
 })
 

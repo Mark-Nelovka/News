@@ -3,5 +3,5 @@ export interface INews {
   summary: string;
   id: number;
   imageUrl: string;
-  publick: string;
+  publishedAt: string;
 }

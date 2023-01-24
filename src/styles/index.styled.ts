@@ -38,7 +38,7 @@ code {
   img {
     display: block;
     max-width: 100%;
-    height: auto;
+    /* height: auto; */
   }
   a {
     text-decoration: none;

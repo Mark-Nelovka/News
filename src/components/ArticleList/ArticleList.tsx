@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { getNews } from "../../redux/news/newsOperations";
 import calendar from "../../images/date-icon.svg";
+import arrow from "../../images/Arrow-more.svg";
 import * as S from "./ArticleList.styled";
 
 export const ArticleList = () => {
@@ -21,7 +22,12 @@ export const ArticleList = () => {
             return (
               <S.NewsItem key={item.id}>
                 <S.ImageContainer>
-                  <img src={item.imageUrl} alt="visual news" />
+                  <img
+                    src={item.imageUrl}
+                    width="400"
+                    height="217"
+                    alt="visual news"
+                  />
                 </S.ImageContainer>
                 <S.DescriptionContainer>
                   <S.DateContainer>
@@ -31,8 +37,13 @@ export const ArticleList = () => {
                     <S.Date>{item.publishedAt}</S.Date>
                   </S.DateContainer>
                   <S.TitleItem>{item.title}</S.TitleItem>
-                  <S.TitleDescription>{item.summary}</S.TitleDescription>
+                  <S.TextDescription>
+                    {item.summary.slice(0, 100)}...
+                  </S.TextDescription>
                 </S.DescriptionContainer>
+                <S.Button>
+                  <S.ButtonLink to={`/news/${item.id}`}>Read more</S.ButtonLink>
+                </S.Button>
               </S.NewsItem>
             );
           })}

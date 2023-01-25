@@ -4,6 +4,7 @@ import { getNews } from "../../redux/news/newsOperations";
 import calendar from "../../images/date-icon.svg";
 import arrow from "../../images/Arrow-more.svg";
 import * as S from "./ArticleList.styled";
+import FormateDate from "../../helpers/transformDate";
 
 export const ArticleList = () => {
   const news = useAppSelector((state) => state.news.news);
@@ -34,7 +35,7 @@ export const ArticleList = () => {
                     <S.DateIconContainer>
                       <img src={calendar} alt="calendar icon" />
                     </S.DateIconContainer>
-                    <S.Date>{item.publishedAt}</S.Date>
+                    <S.Date>{FormateDate(item.publishedAt)}</S.Date>
                   </S.DateContainer>
                   <S.TitleItem>{item.title}</S.TitleItem>
                   <S.TextDescription>

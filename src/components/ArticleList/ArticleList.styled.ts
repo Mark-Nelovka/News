@@ -38,7 +38,7 @@ display: inline-block;
 
 export const DescriptionContainer = styled.div`
 padding: 25px 25px 0px 25px;
-margin-bottom: auto;
+/* margin-bottom: auto; */
 `
 
 export const DateContainer = styled.div`
@@ -88,6 +88,8 @@ display: flex;
 align-items: center;
 /* margin-top: auto; */
 background-color: inherit;
+margin-left: 25px;
+margin-top: 20px;
 `
 
 export const ButtonLink = styled(Link)`

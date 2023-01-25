@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { IStateNews } from "../../interfaces/state";
 import Notiflix from "notiflix";
 
@@ -18,4 +18,6 @@ const getNews = createAsyncThunk('news/getNews', async (_, thunkApi) => {
    }
 });
 
-export { getNews };
+const filter = createAction<string>("news/filter");
+
+export { getNews, filter };

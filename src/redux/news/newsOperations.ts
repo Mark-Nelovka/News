@@ -18,6 +18,15 @@ const getNews = createAsyncThunk('news/getNews', async (_, thunkApi) => {
    }
 });
 
+const getNewsById = createAsyncThunk('news/getNewsById', async (payload: string, thunkApi) => {
+   try {
+      const { data } = await axios.get(`/v3/articles/${payload}`);
+      return data;
+   } catch (error) {
+      thunkApi.rejectWithValue("Oooops, something is wrong");
+   }
+});
+
 const filter = createAction<string>("news/filter");
 
-export { getNews, filter };
+export { getNews, filter, getNewsById };

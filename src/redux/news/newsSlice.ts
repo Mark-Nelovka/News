@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { filter, getNews } from "./newsOperations";
+import { filter, getNews, getNewsById } from "./newsOperations";
 import { IStateNews } from '../../interfaces/state';
 import { INews } from '../../interfaces/news';
 import Notiflix from "notiflix";
@@ -23,17 +23,20 @@ const newsSlice = createSlice({
      });
     builder.addCase(getNews.rejected, (state: IStateNews, {payload} ) => {
       Notiflix.Notify.failure(`${payload}`);
-    });    
+    });
+    
+    builder.addCase(getNewsById.pending, (state: IStateNews, _) => {
+     
+    });
+    builder.addCase(getNewsById.fulfilled, (state: IStateNews, { payload }: PayloadAction<INews>) => {
+      state.news = [payload];
+     });
+    builder.addCase(getNewsById.rejected, (state: IStateNews, {payload} ) => {
+      Notiflix.Notify.failure(`${payload}`);
+    });   
 
     builder.addCase(filter, (state: IStateNews, {payload} ) => {
       state.filter = payload;
-      // state.news = state.news.filter(item => {
-      //   const matchValue = payload.toLowerCase()
-      //   const { title, summary } = item
-      //   if (title.toLowerCase().includes(matchValue)) return true
-      //   if (summary.toLowerCase().includes(matchValue)) return true
-      //   return false
-      // })
     });    
   },
   

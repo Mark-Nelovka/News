@@ -79,14 +79,12 @@ font-weight: ${({theme}) => theme.fontWeight.reqular};
 font-size: 16px;
 line-height: 150%;
 color: ${({ theme }) => theme.palette.text};
-/* margin-bottom: 20px; */
 `
 
 export const Button = styled.button`
 position: relative;
 display: flex;
 align-items: center;
-/* margin-top: auto; */
 background-color: inherit;
 margin-left: 25px;
 margin-top: 20px;

@@ -65,11 +65,12 @@ export const ArticleList = () => {
       <S.NewsList>
         {items.length > 0 &&
           items.map((item) => {
+            const { id, imageUrl, publishedAt, title, summary } = item;
             return (
-              <S.NewsItem key={item.id}>
+              <S.NewsItem key={id}>
                 <S.ImageContainer>
                   <img
-                    src={item.imageUrl}
+                    src={imageUrl}
                     width="400"
                     height="217"
                     alt="visual news"
@@ -80,15 +81,20 @@ export const ArticleList = () => {
                     <S.DateIconContainer>
                       <img src={calendar} alt="calendar icon" />
                     </S.DateIconContainer>
-                    <S.Date>{FormateDate(item.publishedAt)}</S.Date>
+                    <S.Date>{FormateDate(publishedAt)}</S.Date>
                   </S.DateContainer>
-                  <S.TitleItem>{light(item.title)}</S.TitleItem>
+                  <S.TitleItem>{light(title)}</S.TitleItem>
                   <S.TextDescription>
-                    {light(item.summary.slice(0, 100))}...
+                    {light(summary.slice(0, 100))}...
                   </S.TextDescription>
                 </S.DescriptionContainer>
                 <S.Button>
-                  <S.ButtonLink to={`/news/${item.id}`}>Read more</S.ButtonLink>
+                  <S.ButtonLink
+                    to={`/news/${id}`}
+                    state={{ summary, imageUrl, title }}
+                  >
+                    Read more
+                  </S.ButtonLink>
                 </S.Button>
               </S.NewsItem>
             );
